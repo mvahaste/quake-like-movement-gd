@@ -1,0 +1,11 @@
+0b7126e0c6e86d3ec295a72f5aa6e0bd
+::res://::1672009566
+box.tscn::PackedScene::6967139199341551790::1672009376::0::1::::<><>::uid://cs83ck0t4g2j7
+grid_1.png::CompressedTexture2D::4032468921842619502::1672008899::1672009280::1::::<><>::
+grid_1.tres::StandardMaterial3D::2496035548918965523::1672009304::0::1::::<><>::uid://bxpmf6etlc2gw
+grid_2.png::CompressedTexture2D::5004567180905104295::1672009272::1672009314::1::::<><>::
+grid_2.tres::StandardMaterial3D::6106069230895934430::1672009324::0::1::::<><>::uid://cdkiqw1qkqrrb
+grid_3.png::CompressedTexture2D::8530250334641375908::1672009549::1672009566::1::::<><>::
+ground.tscn::PackedScene::7782523844320562433::1672009373::0::1::::<><>::uid://bbtdlt8n2m2fn
+icon.svg::CompressedTexture2D::8283770277598440196::1672008671::1672008680::1::::<><>::
+Main.tscn::PackedScene::7407820242061908837::1672009514::0::1::::<><>::uid://di46bbpwdpgfx<>uid://c6i608828npn7

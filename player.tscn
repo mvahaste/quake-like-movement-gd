@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://capjbcwj6qrp0"]
+
+[ext_resource type="Material" uid="uid://irrefgtp4rhh" path="res://grid_3.tres" id="1_tmp3y"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ugsp0"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fmt4b"]
+material = ExtResource("1_tmp3y")
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ugsp0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_fmt4b")
+
+[node name="Head" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]

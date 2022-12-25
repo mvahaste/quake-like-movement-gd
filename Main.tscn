@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddsnym7sc8as0"]
+
+[ext_resource type="PackedScene" uid="uid://di46bbpwdpgfx" path="res://ground.tscn" id="1_jlyiq"]
+[ext_resource type="PackedScene" uid="uid://c6i608828npn7" path="res://box.tscn" id="2_2us5x"]
+[ext_resource type="PackedScene" uid="uid://capjbcwj6qrp0" path="res://player.tscn" id="3_mlg6t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5widx"]
+sky_top_color = Color(0.431373, 0.631373, 1, 1)
+sky_horizon_color = Color(0.74902, 0.839216, 1, 1)
+ground_bottom_color = Color(0.196078, 0.219608, 0.258824, 1)
+ground_horizon_color = Color(0.74902, 0.839216, 1, 1)
+
+[sub_resource type="Sky" id="Sky_umnsn"]
+sky_material = SubResource("ProceduralSkyMaterial_5widx")
+
+[sub_resource type="Environment" id="Environment_biesn"]
+background_mode = 2
+sky = SubResource("Sky_umnsn")
+ambient_light_source = 3
+
+[node name="Main" type="Node3D"]
+
+[node name="Env" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Env"]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Env"]
+environment = SubResource("Environment_biesn")
+
+[node name="Objects" type="Node3D" parent="Env"]
+
+[node name="Ground" parent="Env/Objects" instance=ExtResource("1_jlyiq")]
+
+[node name="Boxes" type="Node3D" parent="Env/Objects"]
+
+[node name="Box" parent="Env/Objects/Boxes" instance=ExtResource("2_2us5x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -5)
+
+[node name="Box2" parent="Env/Objects/Boxes" instance=ExtResource("2_2us5x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -5)
+
+[node name="Box3" parent="Env/Objects/Boxes" instance=ExtResource("2_2us5x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, -5)
+
+[node name="Player" parent="." instance=ExtResource("3_mlg6t")]

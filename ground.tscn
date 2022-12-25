@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://di46bbpwdpgfx"]
+
+[ext_resource type="Material" uid="uid://bbtdlt8n2m2fn" path="res://grid_1.tres" id="1_5gem7"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_df132"]
+material = ExtResource("1_5gem7")
+size = Vector2(64, 64)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hyip5"]
+data = PackedVector3Array(32, 0, 32, -32, 0, 32, 32, 0, -32, -32, 0, 32, -32, 0, -32, 32, 0, -32)
+
+[node name="Ground" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_df132")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConcavePolygonShape3D_hyip5")

@@ -20,3 +20,17 @@ mesh = SubResource("CapsuleMesh_fmt4b")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="Label" type="Label" parent="Head"]
+offset_right = 88.0
+offset_bottom = 26.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Velocity: 10"
+
+[node name="WishdirRaycast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+target_position = Vector3(0, 0, -2.921)
+collide_with_bodies = false
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5

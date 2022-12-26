@@ -1,13 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://capjbcwj6qrp0"]
+[gd_scene load_steps=8 format=3 uid="uid://capjbcwj6qrp0"]
 
 [ext_resource type="Script" path="res://PlayerController.gd" id="1_6wt0i"]
 [ext_resource type="Material" uid="uid://irrefgtp4rhh" path="res://grid_3.tres" id="1_tmp3y"]
 [ext_resource type="Script" path="res://DebugInfo.gd" id="3_be7fx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ugsp0"]
+radius = 0.4
+height = 1.75
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b7oro"]
+height = 0.25
+radius = 0.35
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fmt4b"]
 material = ExtResource("1_tmp3y")
+radius = 0.4
+height = 1.75
 
 [sub_resource type="LabelSettings" id="LabelSettings_5b4vs"]
 shadow_color = Color(0, 0, 0, 1)
@@ -17,9 +25,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_6wt0i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0)
 shape = SubResource("CapsuleShape3D_ugsp0")
 
+[node name="AlternateCollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.875, 0)
+shape = SubResource("CylinderShape3D_b7oro")
+disabled = true
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0)
 mesh = SubResource("CapsuleMesh_fmt4b")
 
 [node name="Head" type="Marker3D" parent="."]
@@ -89,6 +104,7 @@ offset_bottom = 65.0
 grow_vertical = 2
 
 [node name="W" type="Control" parent="Head/DebugInfo/Keyboard"]
+layout_mode = 1
 anchors_preset = 0
 offset_left = 45.0
 offset_right = 85.0
@@ -123,7 +139,7 @@ offset_right = 40.0
 offset_bottom = 85.0
 
 [node name="ColorRect" type="ColorRect" parent="Head/DebugInfo/Keyboard/A"]
-layout_mode = 1
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 0.25098)
@@ -152,7 +168,7 @@ offset_right = 85.0
 offset_bottom = 85.0
 
 [node name="ColorRect" type="ColorRect" parent="Head/DebugInfo/Keyboard/S"]
-layout_mode = 1
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 0.25098)
@@ -181,7 +197,7 @@ offset_right = 130.0
 offset_bottom = 85.0
 
 [node name="ColorRect" type="ColorRect" parent="Head/DebugInfo/Keyboard/D"]
-layout_mode = 1
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 0.25098)

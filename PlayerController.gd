@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 
 @export var mouse_sensitivity: float = 0.05
+@export var autohop: bool = false
 
 @onready var head: Marker3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
@@ -14,6 +15,7 @@ var v_gravity: float = 22
 var v_jump_velocity: float = v_gravity / 2.85
 var v_terminal_velocity: float = v_gravity * -3
 
+var hop: bool
 var vertical_velocity: float = 0
 var landing: bool = false
 
@@ -50,16 +52,19 @@ func _process(delta: float) -> void:
 			emit_signal("player_landed", jump_point)
 			landing = false
 		
-		if Input.is_action_just_pressed("jump") or Input.is_action_just_released("scroll_down"):
+		hop = autohop and Input.is_action_pressed("jump")
+		
+		if Input.is_action_just_pressed("jump") or Input.is_action_just_released("scroll_down") or hop:
 			jump_point = self.position
 
 			vertical_velocity = v_jump_velocity
-		
-			move_air(velocity, wishdir, delta)
+
+			# Don't use move_air(), keep the single move_ground() frame causing the player to lose a small amount of speed on hop just like Quake
+			# move_air(velocity, wishdir, delta)
 		else:
 			vertical_velocity = 0
 
-			move_ground(velocity, wishdir, delta)
+		move_ground(velocity, wishdir, delta)
 	else:
 		if not landing:
 			landing = true

@@ -30,6 +30,7 @@ shape = SubResource("CapsuleShape3D_ugsp0")
 
 [node name="AlternateCollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.875, 0)
+visible = false
 shape = SubResource("CylinderShape3D_b7oro")
 disabled = true
 
@@ -43,8 +44,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 [node name="Camera3D" type="Camera3D" parent="Head"]
 fov = 85.0
 
-[node name="DebugInfo" type="Control" parent="Head"]
+[node name="HUD" type="Control" parent="Head"]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DebugInfo" type="Control" parent="Head/HUD"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -58,7 +67,7 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("3_be7fx")
 
-[node name="Velocity" type="Label" parent="Head/DebugInfo"]
+[node name="Velocity" type="Label" parent="Head/HUD/DebugInfo"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -75,7 +84,7 @@ size_flags_vertical = 0
 text = "0"
 label_settings = SubResource("LabelSettings_5b4vs")
 
-[node name="JumpDistance" type="Label" parent="Head/DebugInfo"]
+[node name="JumpDistance" type="Label" parent="Head/HUD/DebugInfo"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -93,7 +102,7 @@ size_flags_vertical = 0
 text = "0"
 label_settings = SubResource("LabelSettings_5b4vs")
 
-[node name="Keyboard" type="Control" parent="Head/DebugInfo"]
+[node name="Keyboard" type="Control" parent="Head/HUD/DebugInfo"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -103,20 +112,20 @@ offset_right = 130.0
 offset_bottom = 65.0
 grow_vertical = 2
 
-[node name="W" type="Control" parent="Head/DebugInfo/Keyboard"]
+[node name="W" type="Control" parent="Head/HUD/DebugInfo/Keyboard"]
 layout_mode = 1
 anchors_preset = 0
 offset_left = 45.0
 offset_right = 85.0
 offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="Head/DebugInfo/Keyboard/W"]
+[node name="ColorRect" type="ColorRect" parent="Head/HUD/DebugInfo/Keyboard/W"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 0.25098)
 
-[node name="Label" type="Label" parent="Head/DebugInfo/Keyboard/W"]
+[node name="Label" type="Label" parent="Head/HUD/DebugInfo/Keyboard/W"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -131,20 +140,20 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "W"
 
-[node name="A" type="Control" parent="Head/DebugInfo/Keyboard"]
+[node name="A" type="Control" parent="Head/HUD/DebugInfo/Keyboard"]
 layout_mode = 1
 anchors_preset = 0
 offset_top = 45.0
 offset_right = 40.0
 offset_bottom = 85.0
 
-[node name="ColorRect" type="ColorRect" parent="Head/DebugInfo/Keyboard/A"]
+[node name="ColorRect" type="ColorRect" parent="Head/HUD/DebugInfo/Keyboard/A"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 0.25098)
 
-[node name="Label" type="Label" parent="Head/DebugInfo/Keyboard/A"]
+[node name="Label" type="Label" parent="Head/HUD/DebugInfo/Keyboard/A"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -159,7 +168,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "A"
 
-[node name="S" type="Control" parent="Head/DebugInfo/Keyboard"]
+[node name="S" type="Control" parent="Head/HUD/DebugInfo/Keyboard"]
 layout_mode = 1
 anchors_preset = 0
 offset_left = 45.0
@@ -167,13 +176,13 @@ offset_top = 45.0
 offset_right = 85.0
 offset_bottom = 85.0
 
-[node name="ColorRect" type="ColorRect" parent="Head/DebugInfo/Keyboard/S"]
+[node name="ColorRect" type="ColorRect" parent="Head/HUD/DebugInfo/Keyboard/S"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 0.25098)
 
-[node name="Label" type="Label" parent="Head/DebugInfo/Keyboard/S"]
+[node name="Label" type="Label" parent="Head/HUD/DebugInfo/Keyboard/S"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -188,7 +197,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "S"
 
-[node name="D" type="Control" parent="Head/DebugInfo/Keyboard"]
+[node name="D" type="Control" parent="Head/HUD/DebugInfo/Keyboard"]
 layout_mode = 1
 anchors_preset = 0
 offset_left = 90.0
@@ -196,13 +205,13 @@ offset_top = 45.0
 offset_right = 130.0
 offset_bottom = 85.0
 
-[node name="ColorRect" type="ColorRect" parent="Head/DebugInfo/Keyboard/D"]
+[node name="ColorRect" type="ColorRect" parent="Head/HUD/DebugInfo/Keyboard/D"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 0.25098)
 
-[node name="Label" type="Label" parent="Head/DebugInfo/Keyboard/D"]
+[node name="Label" type="Label" parent="Head/HUD/DebugInfo/Keyboard/D"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -217,7 +226,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "D"
 
-[node name="Space" type="Control" parent="Head/DebugInfo/Keyboard"]
+[node name="Space" type="Control" parent="Head/HUD/DebugInfo/Keyboard"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -230,7 +239,7 @@ offset_right = 65.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="ColorRect" type="ColorRect" parent="Head/DebugInfo/Keyboard/Space"]
+[node name="ColorRect" type="ColorRect" parent="Head/HUD/DebugInfo/Keyboard/Space"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -239,7 +248,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.25098)
 
-[node name="Label" type="Label" parent="Head/DebugInfo/Keyboard/Space"]
+[node name="Label" type="Label" parent="Head/HUD/DebugInfo/Keyboard/Space"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -254,7 +263,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Space"
 
-[node name="Mouse" type="Control" parent="Head/DebugInfo"]
+[node name="Mouse" type="Control" parent="Head/HUD/DebugInfo"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -267,7 +276,7 @@ offset_bottom = 65.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Up" type="Control" parent="Head/DebugInfo/Mouse"]
+[node name="Up" type="Control" parent="Head/HUD/DebugInfo/Mouse"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -277,7 +286,7 @@ offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="ColorRect" type="ColorRect" parent="Head/DebugInfo/Mouse/Up"]
+[node name="ColorRect" type="ColorRect" parent="Head/HUD/DebugInfo/Mouse/Up"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -292,7 +301,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.25098)
 
-[node name="Label" type="Label" parent="Head/DebugInfo/Mouse/Up"]
+[node name="Label" type="Label" parent="Head/HUD/DebugInfo/Mouse/Up"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -307,7 +316,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Ʌ"
 
-[node name="Down" type="Control" parent="Head/DebugInfo/Mouse"]
+[node name="Down" type="Control" parent="Head/HUD/DebugInfo/Mouse"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -320,7 +329,7 @@ offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="ColorRect" type="ColorRect" parent="Head/DebugInfo/Mouse/Down"]
+[node name="ColorRect" type="ColorRect" parent="Head/HUD/DebugInfo/Mouse/Down"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -329,7 +338,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.25098)
 
-[node name="Label" type="Label" parent="Head/DebugInfo/Mouse/Down"]
+[node name="Label" type="Label" parent="Head/HUD/DebugInfo/Mouse/Down"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -344,7 +353,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "V"
 
-[node name="Center" type="Control" parent="Head/DebugInfo/Mouse"]
+[node name="Center" type="Control" parent="Head/HUD/DebugInfo/Mouse"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -354,7 +363,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MouseBase" type="ColorRect" parent="Head/DebugInfo/Mouse/Center"]
+[node name="MouseBase" type="ColorRect" parent="Head/HUD/DebugInfo/Mouse/Center"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -369,28 +378,192 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.25098)
 
-[node name="MouseCursor" type="ColorRect" parent="Head/DebugInfo/Mouse/Center"]
+[node name="MouseCursor" type="ColorRect" parent="Head/HUD/DebugInfo/Mouse/Center"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
+offset_left = -7.5
+offset_top = -7.5
+offset_right = 7.5
+offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.25098)
 
-[node name="Line2D" type="Line2D" parent="Head/DebugInfo/Mouse/Center"]
+[node name="Line2D" type="Line2D" parent="Head/HUD/DebugInfo/Mouse/Center"]
 points = PackedVector2Array(0, 0, 0, 0)
 width = 3.0
 default_color = Color(0, 0, 0, 0.25098)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
+
+[node name="Crosshair" type="Control" parent="Head/HUD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bottom" type="Control" parent="Head/HUD/Crosshair"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Outer" type="ColorRect" parent="Head/HUD/Crosshair/Bottom"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.5
+offset_top = -3.5
+offset_right = 1.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Inner" type="ColorRect" parent="Head/HUD/Crosshair/Bottom"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -2.5
+offset_right = 0.5
+offset_bottom = 2.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Top" type="Control" parent="Head/HUD/Crosshair"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="Outer" type="ColorRect" parent="Head/HUD/Crosshair/Top"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.5
+offset_top = -3.5
+offset_right = 1.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Inner" type="ColorRect" parent="Head/HUD/Crosshair/Top"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -2.5
+offset_right = 0.5
+offset_bottom = 2.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="Control" parent="Head/HUD/Crosshair"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+
+[node name="Outer" type="ColorRect" parent="Head/HUD/Crosshair/Left"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.5
+offset_top = -1.5
+offset_right = 3.5
+offset_bottom = 1.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Inner" type="ColorRect" parent="Head/HUD/Crosshair/Left"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.5
+offset_top = -0.5
+offset_right = 2.5
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Right" type="Control" parent="Head/HUD/Crosshair"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Outer" type="ColorRect" parent="Head/HUD/Crosshair/Right"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.5
+offset_top = -1.5
+offset_right = 3.5
+offset_bottom = 1.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Inner" type="ColorRect" parent="Head/HUD/Crosshair/Right"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.5
+offset_top = -0.5
+offset_right = 2.5
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="WishdirRaycast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

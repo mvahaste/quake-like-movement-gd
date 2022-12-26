@@ -8,11 +8,12 @@ extends CharacterBody3D
 @onready var camera: Camera3D = $Head/Camera3D
 
 var v_friction: float = 10
-var v_max_speed: float = 6
+var v_max_speed: float = 7
 var v_max_air_speed: float = 0.1 * v_max_speed
-var v_accel: float = 12 * v_max_speed
+var v_accel: float = 15 * v_max_speed
 var v_gravity: float = 22
 var v_jump_velocity: float = v_gravity / 2.85
+var v_jump_surface_angle_modifier: float = 0.1
 var v_terminal_velocity: float = v_gravity * -3
 
 var hop: bool
@@ -54,7 +55,7 @@ func _process(delta: float) -> void:
 		
 		hop = autohop and Input.is_action_pressed("jump")
 		
-		if Input.is_action_just_pressed("jump") or Input.is_action_just_released("scroll_down") or hop:
+		if Input.is_action_just_pressed("jump") or Input.is_action_just_released("scroll_down") or Input.is_action_just_released("scroll_up") or hop:
 			jump_point = self.position
 
 			vertical_velocity = v_jump_velocity
@@ -121,7 +122,7 @@ func friction(input_velocity: Vector3, delta: float) -> Vector3:
 
 		scaled_velocity = input_velocity * max(speed - drop, 0) / speed
 	
-	if speed <= 0.25:
+	if speed <= 0.35:
 		return scaled_velocity * 0
 	
 	return scaled_velocity

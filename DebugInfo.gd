@@ -1,7 +1,7 @@
 extends Control
 
 
-@onready var player: CharacterBody3D = $"../../../Player"
+@onready var player: CharacterBody3D = $"../../../../Player"
 
 @onready var velocity: Label = $Velocity
 @onready var jump_distance: Label = $JumpDistance
@@ -10,16 +10,18 @@ extends Control
 @onready var mouse_line: Line2D = $Mouse/Center/Line2D
 @onready var keyboard: Control = $Keyboard
 
+var lerp_return: float = 0.25
+
 
 func _ready() -> void:
 	player.connect("player_landed", update_jump_distance)
 
 
 func _physics_process(_delta) -> void:
-	velocity.text = "%s m/s" % (round(player.velocity.length() * 100) / 100)
+	velocity.text = "vel: %s m/s" % (round(Vector3(player.velocity.x, 0, player.velocity.z).length() * 100) / 100)
 
-	mouse_line.set_point_position(1, lerp(mouse_line.points[1], Vector2.ZERO, 0.15))
-	mouse_cursor.position = lerp(mouse_cursor.position, Vector2(-10, -10), 0.15)
+	mouse_line.set_point_position(1, lerp(mouse_line.points[1], Vector2.ZERO, lerp_return))
+	mouse_cursor.position = lerp(mouse_cursor.position, Vector2(-7.5, -7.5), lerp_return)
 
 
 func _input(event: InputEvent) -> void:
@@ -79,4 +81,4 @@ func delay(time: float) -> void:
 
 
 func update_jump_distance(jump_point: Vector3) -> void:
-	jump_distance.text = "%s m" % (round(player.position.distance_to(jump_point) * 100) / 100)
+	jump_distance.text = "dist: %s m" % (round(player.position.distance_to(jump_point) * 100) / 100)

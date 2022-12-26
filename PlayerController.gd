@@ -6,15 +6,20 @@ extends CharacterBody3D
 @onready var head: Marker3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
 
-var v_friction: float = 5
+var v_friction: float = 10
 var v_max_speed: float = 6
 var v_max_air_speed: float = 0.1 * v_max_speed
-var v_accel: float = 10 * v_max_speed
-var v_gravity: float = 20
-var v_jump_velocity: float = v_gravity / 3.25
+var v_accel: float = 12 * v_max_speed
+var v_gravity: float = 22
+var v_jump_velocity: float = v_gravity / 2.85
 var v_terminal_velocity: float = v_gravity * -3
 
 var vertical_velocity: float = 0
+var landing: bool = false
+
+var jump_point: Vector3 = Vector3(0, 1, 0)
+
+signal player_landed
 
 
 func _ready() -> void:
@@ -41,26 +46,30 @@ func _process(delta: float) -> void:
 	var wishdir = Vector3(strafe_input, 0, forward_input).rotated(Vector3.UP, rotation.y).normalized()
 
 	if self.is_on_floor():
-		if Input.is_action_just_pressed("jump"):
+		if landing:
+			emit_signal("player_landed", jump_point)
+			landing = false
+		
+		if Input.is_action_just_pressed("jump") or Input.is_action_just_released("scroll_down"):
+			jump_point = self.position
+
 			vertical_velocity = v_jump_velocity
 		
 			move_air(velocity, wishdir, delta)
-			print("jump")
 		else:
 			vertical_velocity = 0
 
 			move_ground(velocity, wishdir, delta)
-			print("ground")
 	else:
+		if not landing:
+			landing = true
+		
 		if vertical_velocity >= v_terminal_velocity:
 			vertical_velocity -= v_gravity * delta
 
 		move_air(velocity, wishdir, delta)
-		print("air")
 	
 	move_and_slide()
-
-	$Head/VelocityLabel.text = "%s" % round(velocity.length() * 100)
 
 
 # func _physics_process(delta: float) -> void:
@@ -95,8 +104,6 @@ func accelerate(wishdir: Vector3, input_velocity: Vector3, max_speed: float, del
 
 	var add_speed: float = clamp(max_speed - current_speed, 0, v_accel * delta)
 
-	print(max_speed)
-
 	return input_velocity + wishdir * add_speed
 
 
@@ -120,6 +127,7 @@ func move_ground(input_velocity: Vector3, wishdir: Vector3, delta: float) -> voi
 
 	vel.x = input_velocity.x
 	vel.z = input_velocity.z
+	
 	vel = friction(vel, delta)
 	vel = accelerate(wishdir, vel, v_max_speed, delta)
 
@@ -133,9 +141,10 @@ func move_air(input_velocity: Vector3, wishdir: Vector3, delta: float) -> void:
 
 	vel.x = input_velocity.x
 	vel.z = input_velocity.z
-	# vel = friction(vel, delta)
+
 	vel = accelerate(wishdir, vel, v_max_air_speed, delta)
 
 	vel.y = vertical_velocity
 
 	velocity = vel
+	

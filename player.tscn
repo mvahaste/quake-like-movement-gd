@@ -31,7 +31,78 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Velocity: 10"
 
+[node name="WishdirContainer" type="Control" parent="Head"]
+visible = false
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 80.0
+offset_top = -95.5
+offset_right = 271.0
+offset_bottom = 95.5
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="Center" type="Control" parent="Head/WishdirContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -0.5
+offset_right = 0.5
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Wishdir" type="Line2D" parent="Head/WishdirContainer/Center"]
+points = PackedVector2Array(0, 0, 0, -90)
+width = 4.0
+default_color = Color(0, 0.635294, 1, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Velocity" type="Line2D" parent="Head/WishdirContainer/Center"]
+points = PackedVector2Array(0, 0, 0, -90)
+width = 4.0
+default_color = Color(0.964706, 0.160784, 0.231373, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="WishdirLabel" type="Label" parent="Head/WishdirContainer"]
+modulate = Color(0, 0.635294, 1, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -43.5
+offset_right = 57.0
+offset_bottom = -17.5
+grow_vertical = 0
+text = "wishdir"
+
+[node name="VelocityLabel" type="Label" parent="Head/WishdirContainer"]
+modulate = Color(0.964706, 0.160784, 0.231373, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -26.0
+offset_right = 60.0
+grow_vertical = 0
+text = "velocity"
+
 [node name="WishdirRaycast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+target_position = Vector3(0, 0, 0)
+collide_with_bodies = false
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+
+[node name="VelocityRaycast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 target_position = Vector3(0, 0, 0)
 collide_with_bodies = false

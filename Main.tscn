@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bw5bwt40ropg"]
+[gd_scene load_steps=8 format=3 uid="uid://bw5bwt40ropg"]
 
 [ext_resource type="PackedScene" uid="uid://di46bbpwdpgfx" path="res://ground.tscn" id="1_jlyiq"]
 [ext_resource type="PackedScene" uid="uid://c6i608828npn7" path="res://box.tscn" id="2_2us5x"]
 [ext_resource type="PackedScene" uid="uid://capjbcwj6qrp0" path="res://Player.tscn" id="3_mlg6t"]
+[ext_resource type="PackedScene" uid="uid://d3hun2pkibse5" path="res://DebugInfo.tscn" id="4_4e1wm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5widx"]
 sky_top_color = Color(0.431373, 0.631373, 1, 1)
@@ -451,3 +452,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.5, -5)
 
 [node name="Player" parent="." instance=ExtResource("3_mlg6t")]
 autohop = true
+
+[node name="DebugInfo" parent="." instance=ExtResource("4_4e1wm")]

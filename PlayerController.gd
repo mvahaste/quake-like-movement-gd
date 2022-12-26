@@ -21,6 +21,7 @@ var v_cam_accel: float = 80.0
 var hop: bool
 var vertical_velocity: float = 0
 var landing: bool = false
+var walking: bool = true
 
 var jump_point: Vector3 = Vector3(0, 1, 0)
 
@@ -74,10 +75,19 @@ func _physics_process(delta: float) -> void:
 
 			vertical_velocity = v_jump_velocity
 
+			$Sounds/Jump.play()
+
+			if walking:
+				walking = false
+
 			# Don't use move_air(), keep the single move_ground() frame causing the player to lose a small amount of speed just like Quake
 			move_air(velocity, wishdir, delta)
 		else:
 			vertical_velocity = 0
+
+			if !walking:
+				$Sounds/Land.play()
+				walking = true
 
 			move_ground(velocity, wishdir, delta)
 

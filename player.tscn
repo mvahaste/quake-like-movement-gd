@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://capjbcwj6qrp0"]
+[gd_scene load_steps=5 format=3 uid="uid://capjbcwj6qrp0"]
 
+[ext_resource type="Script" path="res://PlayerController.gd" id="1_6wt0i"]
 [ext_resource type="Material" uid="uid://irrefgtp4rhh" path="res://grid_3.tres" id="1_tmp3y"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ugsp0"]
@@ -9,6 +10,7 @@ material = ExtResource("1_tmp3y")
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_6wt0i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_ugsp0")
@@ -20,6 +22,7 @@ mesh = SubResource("CapsuleMesh_fmt4b")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+fov = 85.0
 
 [node name="Label" type="Label" parent="Head"]
 offset_right = 88.0
@@ -30,7 +33,7 @@ text = "Velocity: 10"
 
 [node name="WishdirRaycast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-target_position = Vector3(0, 0, -2.921)
+target_position = Vector3(0, 0, 0)
 collide_with_bodies = false
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 5

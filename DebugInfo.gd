@@ -1,9 +1,10 @@
 extends Control
 
 
-@onready var player: CharacterBody3D = $"../../../../Player"
+@onready var player: CharacterBody3D = $"../../../../../Player"
 
-@onready var velocity: Label = $Velocity
+@onready var velocity_label: Label = $Velocity
+@onready var velocity_bar: ProgressBar = $Velocity/Bar
 @onready var jump_distance: Label = $JumpDistance
 @onready var mouse: Control = $Mouse
 @onready var mouse_cursor: ColorRect = $Mouse/Center/MouseCursor
@@ -18,7 +19,8 @@ func _ready() -> void:
 
 
 func _physics_process(_delta) -> void:
-	velocity.text = "vel: %s m/s" % (round(Vector3(player.velocity.x, 0, player.velocity.z).length() * 100) / 100)
+	velocity_label.text = "Velocity: %s m/s" % (round(Vector3(player.velocity.x, 0, player.velocity.z).length() * 100) / 100)
+	velocity_bar.value = round(Vector3(player.velocity.x, 0, player.velocity.z).length() * 100) / 100
 
 	mouse_line.set_point_position(1, lerp(mouse_line.points[1], Vector2.ZERO, lerp_return))
 	mouse_cursor.position = lerp(mouse_cursor.position, Vector2(-7.5, -7.5), lerp_return)
@@ -81,4 +83,4 @@ func delay(time: float) -> void:
 
 
 func update_jump_distance(jump_point: Vector3) -> void:
-	jump_distance.text = "dist: %s m" % (round(player.position.distance_to(jump_point) * 100) / 100)
+	jump_distance.text = "Last jump distance: %s m" % (round(player.position.distance_to(jump_point) * 100) / 100)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://capjbcwj6qrp0"]
+[gd_scene load_steps=10 format=3 uid="uid://capjbcwj6qrp0"]
 
 [ext_resource type="Script" path="res://PlayerController.gd" id="1_6wt0i"]
 [ext_resource type="Material" uid="uid://irrefgtp4rhh" path="res://grid_3.tres" id="1_tmp3y"]
@@ -19,6 +19,12 @@ height = 1.75
 
 [sub_resource type="LabelSettings" id="LabelSettings_5b4vs"]
 shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0t5ee"]
+bg_color = Color(0, 0, 0, 0.25098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmfv5"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -52,22 +58,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DebugInfo" type="Control" parent="Head/HUD"]
+[node name="MarginContainer" type="MarginContainer" parent="Head/HUD"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -210.0
-offset_top = -150.0
-offset_right = 210.0
-offset_bottom = -20.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="DebugInfo" type="Control" parent="Head/HUD/MarginContainer"]
+layout_mode = 2
 script = ExtResource("3_be7fx")
 
-[node name="Velocity" type="Label" parent="Head/HUD/DebugInfo"]
+[node name="Velocity" type="Label" parent="Head/HUD/MarginContainer/DebugInfo"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -81,51 +88,69 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "0"
+text = "0 m/s"
 label_settings = SubResource("LabelSettings_5b4vs")
 
-[node name="JumpDistance" type="Label" parent="Head/HUD/DebugInfo"]
+[node name="Bar" type="ProgressBar" parent="Head/HUD/MarginContainer/DebugInfo/Velocity"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -55.0
-offset_right = 5.0
-offset_bottom = -29.0
+offset_left = -64.0
+offset_top = 2.0
+offset_right = 64.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_0t5ee")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fmfv5")
+max_value = 12.0
+value = 7.0
+show_percentage = false
+
+[node name="JumpDistance" type="Label" parent="Head/HUD/MarginContainer/DebugInfo"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -14.5
+offset_top = -52.0
+offset_right = 14.5
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "0"
+text = "0 m"
 label_settings = SubResource("LabelSettings_5b4vs")
 
-[node name="Keyboard" type="Control" parent="Head/HUD/DebugInfo"]
+[node name="Keyboard" type="Control" parent="Head/HUD/MarginContainer/DebugInfo"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -65.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -130.0
 offset_right = 130.0
-offset_bottom = 65.0
-grow_vertical = 2
+grow_vertical = 0
 
-[node name="W" type="Control" parent="Head/HUD/DebugInfo/Keyboard"]
+[node name="W" type="Control" parent="Head/HUD/MarginContainer/DebugInfo/Keyboard"]
 layout_mode = 1
 anchors_preset = 0
 offset_left = 45.0
 offset_right = 85.0
 offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="Head/HUD/DebugInfo/Keyboard/W"]
+[node name="ColorRect" type="ColorRect" parent="Head/HUD/MarginContainer/DebugInfo/Keyboard/W"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 0.25098)
 
-[node name="Label" type="Label" parent="Head/HUD/DebugInfo/Keyboard/W"]
+[node name="Label" type="Label" parent="Head/HUD/MarginContainer/DebugInfo/Keyboard/W"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -140,20 +165,20 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "W"
 
-[node name="A" type="Control" parent="Head/HUD/DebugInfo/Keyboard"]
+[node name="A" type="Control" parent="Head/HUD/MarginContainer/DebugInfo/Keyboard"]
 layout_mode = 1
 anchors_preset = 0
 offset_top = 45.0
 offset_right = 40.0
 offset_bottom = 85.0
 
-[node name="ColorRect" type="ColorRect" parent="Head/HUD/DebugInfo/Keyboard/A"]
+[node name="ColorRect" type="ColorRect" parent="Head/HUD/MarginContainer/DebugInfo/Keyboard/A"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 0.25098)
 
-[node name="Label" type="Label" parent="Head/HUD/DebugInfo/Keyboard/A"]
+[node name="Label" type="Label" parent="Head/HUD/MarginContainer/DebugInfo/Keyboard/A"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -168,7 +193,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "A"
 
-[node name="S" type="Control" parent="Head/HUD/DebugInfo/Keyboard"]
+[node name="S" type="Control" parent="Head/HUD/MarginContainer/DebugInfo/Keyboard"]
 layout_mode = 1
 anchors_preset = 0
 offset_left = 45.0
@@ -176,13 +201,13 @@ offset_top = 45.0
 offset_right = 85.0
 offset_bottom = 85.0
 
-[node name="ColorRect" type="ColorRect" parent="Head/HUD/DebugInfo/Keyboard/S"]
+[node name="ColorRect" type="ColorRect" parent="Head/HUD/MarginContainer/DebugInfo/Keyboard/S"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 0.25098)
 
-[node name="Label" type="Label" parent="Head/HUD/DebugInfo/Keyboard/S"]
+[node name="Label" type="Label" parent="Head/HUD/MarginContainer/DebugInfo/Keyboard/S"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -197,7 +222,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "S"
 
-[node name="D" type="Control" parent="Head/HUD/DebugInfo/Keyboard"]
+[node name="D" type="Control" parent="Head/HUD/MarginContainer/DebugInfo/Keyboard"]
 layout_mode = 1
 anchors_preset = 0
 offset_left = 90.0
@@ -205,13 +230,13 @@ offset_top = 45.0
 offset_right = 130.0
 offset_bottom = 85.0
 
-[node name="ColorRect" type="ColorRect" parent="Head/HUD/DebugInfo/Keyboard/D"]
+[node name="ColorRect" type="ColorRect" parent="Head/HUD/MarginContainer/DebugInfo/Keyboard/D"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 0.25098)
 
-[node name="Label" type="Label" parent="Head/HUD/DebugInfo/Keyboard/D"]
+[node name="Label" type="Label" parent="Head/HUD/MarginContainer/DebugInfo/Keyboard/D"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -226,7 +251,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "D"
 
-[node name="Space" type="Control" parent="Head/HUD/DebugInfo/Keyboard"]
+[node name="Space" type="Control" parent="Head/HUD/MarginContainer/DebugInfo/Keyboard"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -239,7 +264,7 @@ offset_right = 65.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="ColorRect" type="ColorRect" parent="Head/HUD/DebugInfo/Keyboard/Space"]
+[node name="ColorRect" type="ColorRect" parent="Head/HUD/MarginContainer/DebugInfo/Keyboard/Space"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -248,7 +273,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.25098)
 
-[node name="Label" type="Label" parent="Head/HUD/DebugInfo/Keyboard/Space"]
+[node name="Label" type="Label" parent="Head/HUD/MarginContainer/DebugInfo/Keyboard/Space"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -263,20 +288,19 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Space"
 
-[node name="Mouse" type="Control" parent="Head/HUD/DebugInfo"]
+[node name="Mouse" type="Control" parent="Head/HUD/MarginContainer/DebugInfo"]
 layout_mode = 1
-anchors_preset = 6
+anchors_preset = 3
 anchor_left = 1.0
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -130.0
-offset_top = -65.0
-offset_bottom = 65.0
+offset_top = -130.0
 grow_horizontal = 0
-grow_vertical = 2
+grow_vertical = 0
 
-[node name="Up" type="Control" parent="Head/HUD/DebugInfo/Mouse"]
+[node name="Up" type="Control" parent="Head/HUD/MarginContainer/DebugInfo/Mouse"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -286,7 +310,7 @@ offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="ColorRect" type="ColorRect" parent="Head/HUD/DebugInfo/Mouse/Up"]
+[node name="ColorRect" type="ColorRect" parent="Head/HUD/MarginContainer/DebugInfo/Mouse/Up"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -301,7 +325,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.25098)
 
-[node name="Label" type="Label" parent="Head/HUD/DebugInfo/Mouse/Up"]
+[node name="Label" type="Label" parent="Head/HUD/MarginContainer/DebugInfo/Mouse/Up"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -316,7 +340,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Ʌ"
 
-[node name="Down" type="Control" parent="Head/HUD/DebugInfo/Mouse"]
+[node name="Down" type="Control" parent="Head/HUD/MarginContainer/DebugInfo/Mouse"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -329,7 +353,7 @@ offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="ColorRect" type="ColorRect" parent="Head/HUD/DebugInfo/Mouse/Down"]
+[node name="ColorRect" type="ColorRect" parent="Head/HUD/MarginContainer/DebugInfo/Mouse/Down"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -338,7 +362,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.25098)
 
-[node name="Label" type="Label" parent="Head/HUD/DebugInfo/Mouse/Down"]
+[node name="Label" type="Label" parent="Head/HUD/MarginContainer/DebugInfo/Mouse/Down"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -353,7 +377,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "V"
 
-[node name="Center" type="Control" parent="Head/HUD/DebugInfo/Mouse"]
+[node name="Center" type="Control" parent="Head/HUD/MarginContainer/DebugInfo/Mouse"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -363,7 +387,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MouseBase" type="ColorRect" parent="Head/HUD/DebugInfo/Mouse/Center"]
+[node name="MouseBase" type="ColorRect" parent="Head/HUD/MarginContainer/DebugInfo/Mouse/Center"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -378,7 +402,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.25098)
 
-[node name="MouseCursor" type="ColorRect" parent="Head/HUD/DebugInfo/Mouse/Center"]
+[node name="MouseCursor" type="ColorRect" parent="Head/HUD/MarginContainer/DebugInfo/Mouse/Center"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -393,7 +417,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.25098)
 
-[node name="Line2D" type="Line2D" parent="Head/HUD/DebugInfo/Mouse/Center"]
+[node name="Line2D" type="Line2D" parent="Head/HUD/MarginContainer/DebugInfo/Mouse/Center"]
 points = PackedVector2Array(0, 0, 0, 0)
 width = 3.0
 default_color = Color(0, 0, 0, 0.25098)

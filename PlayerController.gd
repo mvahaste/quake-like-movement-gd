@@ -8,9 +8,9 @@ extends CharacterBody3D
 @onready var camera: Camera3D = $Head/Camera3D
 
 var v_friction: float = 10
-var v_max_speed: float = 7
+var v_max_speed: float = 6
 var v_max_air_speed: float = 0.1 * v_max_speed
-var v_accel: float = 15 * v_max_speed
+var v_accel: float = 12 * v_max_speed
 var v_gravity: float = 22
 var v_jump_velocity: float = v_gravity / 2.85
 var v_jump_surface_angle_modifier: float = 0.1

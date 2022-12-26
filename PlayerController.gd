@@ -10,8 +10,8 @@ var v_friction: float = 5
 var v_max_speed: float = 6
 var v_max_air_speed: float = 0.1 * v_max_speed
 var v_accel: float = 10 * v_max_speed
-var v_gravity: float = 15
-var v_jump_velocity: float = v_gravity / 2.75
+var v_gravity: float = 20
+var v_jump_velocity: float = v_gravity / 3.25
 var v_terminal_velocity: float = v_gravity * -3
 
 var vertical_velocity: float = 0
@@ -28,14 +28,13 @@ func _input(event: InputEvent) -> void:
 		$Head.rotation.x = clamp($Head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
 	if Input.is_action_just_pressed("escape"):
-		get_tree().quit()
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
-func _process(_delta: float) -> void:
-	$Head/VelocityLabel.text = str(velocity.length())
-
-
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	var forward_input: float = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
 	var strafe_input: float = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 
@@ -56,16 +55,47 @@ func _physics_process(delta: float) -> void:
 		if vertical_velocity >= v_terminal_velocity:
 			vertical_velocity -= v_gravity * delta
 
-		move_ground(velocity, wishdir, delta)
+		move_air(velocity, wishdir, delta)
 		print("air")
 	
 	move_and_slide()
+
+	$Head/VelocityLabel.text = "%s" % round(velocity.length() * 100)
+
+
+# func _physics_process(delta: float) -> void:
+# 	var forward_input: float = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
+# 	var strafe_input: float = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+
+# 	var wishdir = Vector3(strafe_input, 0, forward_input).rotated(Vector3.UP, rotation.y).normalized()
+
+# 	if self.is_on_floor():
+# 		if Input.is_action_just_pressed("jump"):
+# 			vertical_velocity = v_jump_velocity
+		
+# 			move_air(velocity, wishdir, delta)
+# 			print("jump")
+# 		else:
+# 			vertical_velocity = 0
+
+# 			move_ground(velocity, wishdir, delta)
+# 			print("ground")
+# 	else:
+# 		if vertical_velocity >= v_terminal_velocity:
+# 			vertical_velocity -= v_gravity * delta
+
+# 		move_air(velocity, wishdir, delta)
+# 		print("air")
+	
+# 	move_and_slide()
 
 
 func accelerate(wishdir: Vector3, input_velocity: Vector3, max_speed: float, delta: float) -> Vector3:
 	var current_speed: float = input_velocity.dot(wishdir)
 
 	var add_speed: float = clamp(max_speed - current_speed, 0, v_accel * delta)
+
+	print(max_speed)
 
 	return input_velocity + wishdir * add_speed
 

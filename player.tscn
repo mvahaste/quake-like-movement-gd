@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://capjbcwj6qrp0"]
+[gd_scene load_steps=11 format=3 uid="uid://capjbcwj6qrp0"]
 
 [ext_resource type="Script" path="res://PlayerController.gd" id="1_6wt0i"]
 [ext_resource type="Material" uid="uid://irrefgtp4rhh" path="res://grid_3.tres" id="1_tmp3y"]
 [ext_resource type="Script" path="res://DebugInfo.gd" id="3_be7fx"]
+[ext_resource type="Texture2D" uid="uid://qdnghcidaa1m" path="res://Knife.png" id="4_esrgj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ugsp0"]
 radius = 0.4
@@ -57,6 +58,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Viewmodel" type="TextureRect" parent="Head/HUD"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -426.0
+offset_top = -517.0
+offset_right = 574.0
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("4_esrgj")
 
 [node name="MarginContainer" type="MarginContainer" parent="Head/HUD"]
 layout_mode = 1
@@ -139,6 +156,7 @@ text = "0 m"
 label_settings = SubResource("LabelSettings_5b4vs")
 
 [node name="Keyboard" type="Control" parent="Head/HUD/MarginContainer/DebugInfo"]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -299,6 +317,7 @@ grow_vertical = 2
 text = "Space"
 
 [node name="Mouse" type="Control" parent="Head/HUD/MarginContainer/DebugInfo"]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0

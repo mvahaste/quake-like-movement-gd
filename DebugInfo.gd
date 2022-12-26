@@ -3,6 +3,7 @@ extends Control
 
 @onready var player: CharacterBody3D = $"../../../../../Player"
 
+@onready var viewmodel: TextureRect = $"../../Viewmodel"
 @onready var fps_label: Label = $FPS
 @onready var velocity_label: Label = $Velocity
 @onready var velocity_bar: ProgressBar = $Velocity/Bar
@@ -27,6 +28,8 @@ func _physics_process(_delta) -> void:
 	mouse_cursor.position = lerp(mouse_cursor.position, Vector2(-7.5, -7.5), lerp_return)
 
 	fps_label.text = "FPS: %s" % Engine.get_frames_per_second()
+
+	viewmodel.position = lerp(viewmodel.position, Vector2(150, 131), lerp_return)
 
 
 func _input(event: InputEvent) -> void:
@@ -65,6 +68,10 @@ func _input(event: InputEvent) -> void:
 		# print("Mouse Pos: %s" % event.relative)
 		mouse_line.set_point_position(1, mouse_line.points[1] + event.relative * 0.1)
 		mouse_cursor.position = mouse_cursor.position + event.relative * 0.1
+
+		viewmodel.position = viewmodel.position + event.relative * 0.1
+
+		viewmodel.position.y = clamp(viewmodel.position.y, 131 - 25, 131 + 25)
 
 
 func press_key(key: String) -> void:

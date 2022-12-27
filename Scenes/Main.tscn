@@ -1,0 +1,365 @@
+[gd_scene load_steps=8 format=3 uid="uid://2nr3wu11dkse"]
+
+[ext_resource type="PackedScene" uid="uid://dcuwsqli42o4m" path="res://Prefabs/Other/Player.tscn" id="1_6fwnm"]
+[ext_resource type="PackedScene" path="res://Prefabs/Objects/Ground.tscn" id="1_pi8ga"]
+[ext_resource type="PackedScene" uid="uid://kwevh5qcjx8q" path="res://Prefabs/Objects/Box.tscn" id="2_kn8fd"]
+[ext_resource type="PackedScene" uid="uid://clqbvyldetl6e" path="res://Prefabs/Other/DebugInfo.tscn" id="2_y8cxs"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5widx"]
+sky_top_color = Color(0.431373, 0.631373, 1, 1)
+sky_horizon_color = Color(0.74902, 0.839216, 1, 1)
+ground_bottom_color = Color(0.196078, 0.219608, 0.258824, 1)
+ground_horizon_color = Color(0.74902, 0.839216, 1, 1)
+
+[sub_resource type="Sky" id="Sky_umnsn"]
+sky_material = SubResource("ProceduralSkyMaterial_5widx")
+
+[sub_resource type="Environment" id="Environment_biesn"]
+background_mode = 2
+sky = SubResource("Sky_umnsn")
+ambient_light_source = 3
+
+[node name="Main" type="Node3D"]
+
+[node name="Env" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Env"]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Env"]
+environment = SubResource("Environment_biesn")
+
+[node name="Objects" type="Node3D" parent="Env"]
+
+[node name="Ground" parent="Env/Objects" instance=ExtResource("1_pi8ga")]
+
+[node name="Canopy" type="Node3D" parent="Env/Objects"]
+
+[node name="Box" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -8)
+
+[node name="Box2" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -8)
+
+[node name="Box15" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -14)
+
+[node name="Box16" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -14)
+
+[node name="Box29" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 0.5, -14)
+
+[node name="Box30" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 1.5, -14)
+
+[node name="Box41" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 0.5, -8)
+
+[node name="Box42" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 1.5, -8)
+
+[node name="Box43" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -8)
+
+[node name="Box44" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, -8)
+
+[node name="Box45" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -8)
+
+[node name="Box46" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2.5, -8)
+
+[node name="Box47" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.5, -8)
+
+[node name="Box48" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.5, -8)
+
+[node name="Box49" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.5, -8)
+
+[node name="Box50" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -14)
+
+[node name="Box51" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, -14)
+
+[node name="Box52" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -14)
+
+[node name="Box53" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2.5, -14)
+
+[node name="Box54" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.5, -14)
+
+[node name="Box55" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.5, -14)
+
+[node name="Box56" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.5, -14)
+
+[node name="Box64" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -13)
+
+[node name="Box65" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, -13)
+
+[node name="Box66" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -13)
+
+[node name="Box67" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2.5, -13)
+
+[node name="Box68" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.5, -13)
+
+[node name="Box69" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.5, -13)
+
+[node name="Box70" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.5, -13)
+
+[node name="Box71" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -12)
+
+[node name="Box72" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, -12)
+
+[node name="Box73" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -12)
+
+[node name="Box74" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2.5, -12)
+
+[node name="Box75" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.5, -12)
+
+[node name="Box76" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.5, -12)
+
+[node name="Box77" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.5, -12)
+
+[node name="Box78" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -11)
+
+[node name="Box79" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, -11)
+
+[node name="Box80" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -11)
+
+[node name="Box81" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2.5, -11)
+
+[node name="Box82" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.5, -11)
+
+[node name="Box83" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.5, -11)
+
+[node name="Box84" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.5, -11)
+
+[node name="Box85" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -10)
+
+[node name="Box86" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, -10)
+
+[node name="Box87" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -10)
+
+[node name="Box88" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2.5, -10)
+
+[node name="Box89" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.5, -10)
+
+[node name="Box90" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.5, -10)
+
+[node name="Box91" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.5, -10)
+
+[node name="Box92" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -9)
+
+[node name="Box93" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, -9)
+
+[node name="Box94" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -9)
+
+[node name="Box95" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2.5, -9)
+
+[node name="Box96" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.5, -9)
+
+[node name="Box97" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.5, -9)
+
+[node name="Box98" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.5, -9)
+
+[node name="Box57" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 2.5, -14)
+
+[node name="Box58" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 2.5, -13)
+
+[node name="Box59" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 2.5, -12)
+
+[node name="Box60" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 2.5, -11)
+
+[node name="Box61" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 2.5, -10)
+
+[node name="Box62" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 2.5, -9)
+
+[node name="Box63" parent="Env/Objects/Canopy" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 2.5, -8)
+
+[node name="CanopyRamp" parent="Env/Objects" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(3, 0, 0, 0, 0.866025, -3, 0, 0.5, 5.19615, 6, 1.067, -5.152)
+
+[node name="Wall" type="Node3D" parent="Env/Objects"]
+
+[node name="Box" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 21)
+
+[node name="Box2" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 21)
+
+[node name="Box3" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 21)
+
+[node name="Box4" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 21)
+
+[node name="Box5" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 21)
+
+[node name="Box6" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, 21)
+
+[node name="Box7" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, 21)
+
+[node name="Box8" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.5, 21)
+
+[node name="Box9" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, 21)
+
+[node name="Box10" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.5, 21)
+
+[node name="Box11" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, 21)
+
+[node name="Box12" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.5, 21)
+
+[node name="Box13" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.5, 21)
+
+[node name="Box14" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.5, 21)
+
+[node name="Box15" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, 21)
+
+[node name="Box16" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.5, 21)
+
+[node name="Box17" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, 21)
+
+[node name="Box18" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.5, 21)
+
+[node name="Box19" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 21)
+
+[node name="Box20" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, 21)
+
+[node name="Box21" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 21)
+
+[node name="Box22" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, 21)
+
+[node name="Box23" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, 21)
+
+[node name="Box24" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.5, 21)
+
+[node name="Box25" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 21)
+
+[node name="Box26" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, 21)
+
+[node name="Box27" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 21)
+
+[node name="Box28" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 21)
+
+[node name="Box29" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.5, 21)
+
+[node name="Box30" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.5, 21)
+
+[node name="Box31" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.5, 21)
+
+[node name="Box32" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.5, 21)
+
+[node name="Box33" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, 21)
+
+[node name="Box34" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1.5, 21)
+
+[node name="Box35" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 21)
+
+[node name="Box36" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.5, 21)
+
+[node name="Box37" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, 21)
+
+[node name="Box38" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.5, 21)
+
+[node name="Box39" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, 21)
+
+[node name="Box40" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.5, 21)
+
+[node name="Box41" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5, 21)
+
+[node name="Box42" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.5, 21)
+
+[node name="Player" parent="." instance=ExtResource("1_6fwnm")]
+e_autohop = true
+
+[node name="DebugInfo" parent="." instance=ExtResource("2_y8cxs")]

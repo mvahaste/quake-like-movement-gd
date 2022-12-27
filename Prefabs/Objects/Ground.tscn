@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://di46bbpwdpgfx"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Material" uid="uid://bbtdlt8n2m2fn" path="res://grid_1.tres" id="1_5gem7"]
+[ext_resource type="Material" uid="uid://bbtdlt8n2m2fn" path="res://Materials/grid_1.tres" id="1_5gem7"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_df132"]
 material = ExtResource("1_5gem7")

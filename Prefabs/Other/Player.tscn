@@ -1,46 +1,46 @@
-[gd_scene load_steps=8 format=3 uid="uid://capjbcwj6qrp0"]
+[gd_scene load_steps=8 format=3 uid="uid://dcuwsqli42o4m"]
 
-[ext_resource type="Script" path="res://PlayerController.gd" id="1_6wt0i"]
-[ext_resource type="Material" uid="uid://irrefgtp4rhh" path="res://grid_3.tres" id="1_tmp3y"]
-[ext_resource type="AudioStream" uid="uid://bvi0wbtgyav2i" path="res://jump.wav" id="5_qotso"]
-[ext_resource type="AudioStream" uid="uid://blpu6mc2rt7bn" path="res://land.wav" id="6_8ir83"]
+[ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_52gdx"]
+[ext_resource type="Material" path="res://Materials/grid_3.tres" id="2_aqrq4"]
+[ext_resource type="AudioStream" uid="uid://bvi0wbtgyav2i" path="res://Audio/jump.wav" id="3_pq8n8"]
+[ext_resource type="AudioStream" uid="uid://blpu6mc2rt7bn" path="res://Audio/land.wav" id="4_jg3yg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ugsp0"]
 radius = 0.4
 height = 1.75
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_b7oro"]
-height = 0.25
-radius = 0.35
+height = 1.75
+radius = 0.375
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fmt4b"]
-material = ExtResource("1_tmp3y")
+material = ExtResource("2_aqrq4")
 radius = 0.4
 height = 1.75
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-script = ExtResource("1_6wt0i")
+script = ExtResource("1_52gdx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0)
 shape = SubResource("CapsuleShape3D_ugsp0")
 
 [node name="AlternateCollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.875, 0)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0)
 shape = SubResource("CylinderShape3D_b7oro")
 disabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0)
-visible = false
+layers = 524288
 mesh = SubResource("CapsuleMesh_fmt4b")
 
 [node name="Head" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+cull_mask = 524287
 fov = 90.0
 
 [node name="HUD" type="Control" parent="Head"]
@@ -226,9 +226,9 @@ debug_shape_thickness = 5
 [node name="Sounds" type="Node3D" parent="."]
 
 [node name="Jump" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource("5_qotso")
+stream = ExtResource("3_pq8n8")
 volume_db = -25.0
 
 [node name="Land" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource("6_8ir83")
+stream = ExtResource("4_jg3yg")
 volume_db = -25.0

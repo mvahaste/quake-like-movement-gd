@@ -338,11 +338,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1.5, 21)
 [node name="Box35" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 21)
 
+[node name="Box43" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.5, 21)
+
 [node name="Box36" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.5, 21)
 
 [node name="Box37" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, 21)
+
+[node name="Box44" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.5, 21)
 
 [node name="Box38" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.5, 21)
@@ -358,6 +364,94 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5, 21)
 
 [node name="Box42" parent="Env/Objects/Wall" instance=ExtResource("2_kn8fd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.5, 21)
+
+[node name="BhopPlatforms" type="Node3D" parent="Env/Objects"]
+
+[node name="Box" parent="Env/Objects/BhopPlatforms" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -16, 0.5, 0)
+
+[node name="Box2" parent="Env/Objects/BhopPlatforms" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -16, 0.5, -4)
+
+[node name="Box3" parent="Env/Objects/BhopPlatforms" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -16, 0.5, -9)
+
+[node name="Box4" parent="Env/Objects/BhopPlatforms" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -16, 0.5, -15)
+
+[node name="Box8" parent="Env/Objects/BhopPlatforms" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -19, 1.5, -20)
+
+[node name="Box9" parent="Env/Objects/BhopPlatforms" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -13, 2.5, -21)
+
+[node name="Box11" parent="Env/Objects/BhopPlatforms" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -5, 4.5, -13)
+
+[node name="Box12" parent="Env/Objects/BhopPlatforms" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -6, 5.5, -6)
+
+[node name="Box13" parent="Env/Objects/BhopPlatforms" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, -6, 6.5, 4)
+
+[node name="Box10" parent="Env/Objects/BhopPlatforms" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -6, 3.5, -20)
+
+[node name="Box5" parent="Env/Objects/BhopPlatforms" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -22, 0.5, -15)
+
+[node name="Box6" parent="Env/Objects/BhopPlatforms" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -22, 0.5, -8)
+
+[node name="Box7" parent="Env/Objects/BhopPlatforms" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -22, 0.5, 0)
+
+[node name="LJPlatforms" type="Node3D" parent="Env/Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="5Meters" type="Node3D" parent="Env/Objects/LJPlatforms"]
+
+[node name="Box" parent="Env/Objects/LJPlatforms/5Meters" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 3, 19, 0.5, 0)
+
+[node name="Box2" parent="Env/Objects/LJPlatforms/5Meters" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 5, 19, 0.5, -9)
+
+[node name="Label3D" type="Label3D" parent="Env/Objects/LJPlatforms/5Meters"]
+transform = Transform3D(1.91069e-15, 1, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1, 0, -4.37114e-08, 19, 0.01, -4)
+offset = Vector2(0, -0.082)
+text = "5 m"
+font_size = 96
+
+[node name="6Meters" type="Node3D" parent="Env/Objects/LJPlatforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="Box" parent="Env/Objects/LJPlatforms/6Meters" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 3, 19, 0.5, 0)
+
+[node name="Box2" parent="Env/Objects/LJPlatforms/6Meters" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 19, 0.5, -9.5)
+
+[node name="Label3D" type="Label3D" parent="Env/Objects/LJPlatforms/6Meters"]
+transform = Transform3D(1.91069e-15, 1, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1, 0, -4.37114e-08, 19, 0.01, -4.5)
+offset = Vector2(0, -0.082)
+text = "6 m"
+font_size = 96
+
+[node name="7Meters" type="Node3D" parent="Env/Objects/LJPlatforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="Box" parent="Env/Objects/LJPlatforms/7Meters" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 3, 19, 0.5, 0)
+
+[node name="Box2" parent="Env/Objects/LJPlatforms/7Meters" instance=ExtResource("2_kn8fd")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 3, 19, 0.5, -10)
+
+[node name="Label3D" type="Label3D" parent="Env/Objects/LJPlatforms/7Meters"]
+transform = Transform3D(1.91069e-15, 1, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1, 0, -4.37114e-08, 19, 0.01, -5)
+offset = Vector2(0, -0.082)
+text = "7 m"
+font_size = 96
 
 [node name="Player" parent="." instance=ExtResource("1_6fwnm")]
 e_autohop = true

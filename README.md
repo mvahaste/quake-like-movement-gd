@@ -4,6 +4,8 @@
 
 Also includes a `DebugInfo` prefab and script with some on-screen debug info.
 
+Demo video [here](https://www.youtube.com/watch?v=sN_06xe19gg).
+
 TODO:
 - Stairs/steps
 - Crouching

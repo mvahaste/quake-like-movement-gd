@@ -3,7 +3,7 @@
 .import/
 export.cfg
 export_presets.cfg
-build/
+.build/
 
 
 # Imported translations (automatically generated from CSV files)

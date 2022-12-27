@@ -20,16 +20,31 @@ func _ready() -> void:
 
 
 func _physics_process(_delta) -> void:
+	# Update on-screen info
 	velocity_label.text = "Velocity: %s m/s" % (round(Vector3(player.velocity.x, 0, player.velocity.z).length() * 100) / 100)
 	velocity_bar.value = round(Vector3(player.velocity.x, 0, player.velocity.z).length() * 100) / 100
 
 	mouse_line.set_point_position(1, lerp(mouse_line.points[1], Vector2.ZERO, lerp_return))
 	mouse_cursor.position = lerp(mouse_cursor.position, Vector2(-7.5, -7.5), lerp_return)
 
-	fps_label.text = "FPS: %s" % Engine.get_frames_per_second()
+	fps_label.text = "ESC: cursor lock\nF: fullscreen\nFPS: %s" % Engine.get_frames_per_second()
 
 
 func _input(event: InputEvent) -> void:
+	# Window controls
+	if Input.is_action_just_pressed("escape"):
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			
+	if Input.is_action_pressed("toggle_fullscreen"):
+		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	
+	# Show inputs on screen
 	if Input.is_action_just_pressed("move_forward"):
 		press_key("W")
 	elif Input.is_action_just_released("move_forward"):
@@ -60,7 +75,8 @@ func _input(event: InputEvent) -> void:
 
 	if Input.is_action_just_released("scroll_up"):
 		scroll("Up")
-
+	
+	# Show mouse movement on screen
 	if event is InputEventMouseMotion:
 		# print("Mouse Pos: %s" % event.relative)
 		mouse_line.set_point_position(1, mouse_line.points[1] + event.relative * 0.1)

@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxpmf6etlc2gw"
-path.s3tc="res://.godot/imported/grid_1.png-85786915515694defad33b75b0234ca3.s3tc.ctex"
-path.etc2="res://.godot/imported/grid_1.png-85786915515694defad33b75b0234ca3.etc2.ctex"
+uid="uid://dtsd8hdiu4fqi"
+path.s3tc="res://.godot/imported/grid_3.png-a44cd06131ef98ae3cee7cecec8f006a.s3tc.ctex"
+path.etc2="res://.godot/imported/grid_3.png-a44cd06131ef98ae3cee7cecec8f006a.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc", "etc2"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://grid_1.png"
-dest_files=["res://.godot/imported/grid_1.png-85786915515694defad33b75b0234ca3.s3tc.ctex", "res://.godot/imported/grid_1.png-85786915515694defad33b75b0234ca3.etc2.ctex"]
+source_file="res://Textures/grid_3.png"
+dest_files=["res://.godot/imported/grid_3.png-a44cd06131ef98ae3cee7cecec8f006a.s3tc.ctex", "res://.godot/imported/grid_3.png-a44cd06131ef98ae3cee7cecec8f006a.etc2.ctex"]
 
 [params]
 

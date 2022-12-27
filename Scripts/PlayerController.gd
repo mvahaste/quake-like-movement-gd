@@ -1,12 +1,15 @@
 extends CharacterBody3D
 
 
-@export var mouse_sensitivity: float = 0.05
-@export var autohop: bool = false
+# Export variables
+@export var e_mouse_sensitivity: float = 0.05
+@export var e_autohop: bool = false
 
-@onready var head: Marker3D = $Head
-@onready var camera: Camera3D = $Head/Camera3D
+# Node variables
+@onready var n_head: Marker3D = $Head
+@onready var n_camera: Camera3D = $Head/Camera3D
 
+# Value variables
 var v_friction: float = 8
 var v_friction_min: float = 0.1
 var v_max_speed: float = 6
@@ -18,12 +21,14 @@ var v_jump_surface_angle_modifier: float = 0.1
 var v_terminal_velocity: float = v_gravity * -3
 var v_cam_accel: float = 80.0
 
-var hop: bool
-var vertical_velocity: float = 0
-var landing: bool = false
-var walking: bool = true
+# Data variables
+var d_hop: bool
+var d_vertical_velocity: float = 0
+var d_landing: bool = false
+var d_walking: bool = true
 
-var jump_point: Vector3 = Vector3(0, 1, 0)
+# Signal variables
+var s_jump_point: Vector3 = Vector3(0, 1, 0)
 
 signal player_landed
 
@@ -38,66 +43,67 @@ func _input(event: InputEvent) -> void:
 		$Head.rotate_x(deg_to_rad(-event.relative.y) * 0.05)
 		$Head.rotation.x = clamp($Head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
-	if Input.is_action_just_pressed("escape"):
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-
 
 func _process(delta):
-	# Camera3D physics interpolation to reduce physics jitter checked high refresh-rate monitors
 	if Engine.get_frames_per_second() > Engine.physics_ticks_per_second:
-		camera.set_as_top_level(true)
-		camera.global_transform.origin = camera.global_transform.origin.lerp(head.global_transform.origin, v_cam_accel * delta)
-		camera.rotation.y = rotation.y
-		camera.rotation.x = head.rotation.x
+		# Separate camera from player and interpolate it's position to the head
+		n_camera.set_as_top_level(true)
+		n_camera.global_transform.origin = n_camera.global_transform.origin.lerp(n_head.global_transform.origin, v_cam_accel * delta)
+		n_camera.rotation.y = rotation.y
+		n_camera.rotation.x = n_head.rotation.x
 	else:
-		camera.set_as_top_level(false)
-		camera.global_transform = head.global_transform
+		# Revert back to default
+		n_camera.set_as_top_level(false)
+		n_camera.global_transform = n_head.global_transform
 
 
 func _physics_process(delta: float) -> void:
+	# Get input
 	var forward_input: float = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
 	var strafe_input: float = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 
 	var wishdir = Vector3(strafe_input, 0, forward_input).rotated(Vector3.UP, rotation.y).normalized()
 
+	# Bump head on ceiling, don't keep jump velocity
+	if is_on_ceiling():
+		d_vertical_velocity = 0
+	
 	if self.is_on_floor():
-		if landing:
-			emit_signal("player_landed", jump_point)
-			landing = false
+		# Player landing, counts hops
+		if d_landing:
+			emit_signal("player_landed", s_jump_point)
+			d_landing = false
 		
-		hop = autohop and Input.is_action_pressed("jump")
+		# Autohop?
+		d_hop = e_autohop and Input.is_action_pressed("jump")
 		
-		if Input.is_action_just_pressed("jump") or Input.is_action_just_released("scroll_down") or Input.is_action_just_released("scroll_up") or hop:
-			jump_point = self.position
+		# Check for input or autohop
+		if Input.is_action_just_pressed("jump") or Input.is_action_just_released("scroll_down") or Input.is_action_just_released("scroll_up") or d_hop:
+			s_jump_point = self.position
 
-			vertical_velocity = v_jump_velocity
+			d_vertical_velocity = v_jump_velocity
 
 			$Sounds/Jump.play()
 
-			if walking:
-				walking = false
-
-			# Don't use move_air(), keep the single move_ground() frame causing the player to lose a small amount of speed just like Quake
+			if d_walking:
+				d_walking = false
+			
 			move_air(velocity, wishdir, delta)
 		else:
-			vertical_velocity = 0
+			d_vertical_velocity = 0
 
-			if !walking:
+			# Player landing, doesn't count hops
+			if not d_walking:
 				$Sounds/Land.play()
-				walking = true
+				d_walking = true
 
 			move_ground(velocity, wishdir, delta)
-
-		# move_ground(velocity, wishdir, delta)
 	else:
-		if not landing:
-			landing = true
+		if not d_landing:
+			d_landing = true
 		
-		if vertical_velocity >= v_terminal_velocity:
-			vertical_velocity -= v_gravity * delta
+		if d_vertical_velocity >= v_terminal_velocity:
+			d_vertical_velocity -= v_gravity * delta
 
 		move_air(velocity, wishdir, delta)
 	
@@ -136,7 +142,7 @@ func move_ground(input_velocity: Vector3, wishdir: Vector3, delta: float) -> voi
 	vel = friction(vel, delta)
 	vel = accelerate(wishdir, vel, v_max_speed, delta)
 
-	vel.y = vertical_velocity
+	vel.y = d_vertical_velocity
 
 	velocity = vel
 
@@ -149,7 +155,7 @@ func move_air(input_velocity: Vector3, wishdir: Vector3, delta: float) -> void:
 
 	vel = accelerate(wishdir, vel, v_max_air_speed, delta)
 
-	vel.y = vertical_velocity
+	vel.y = d_vertical_velocity
 
 	velocity = vel
 	

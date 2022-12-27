@@ -38,7 +38,7 @@ func _input(event: InputEvent) -> void:
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			
-	if Input.is_action_pressed("toggle_fullscreen"):
+	if Input.is_action_just_pressed("toggle_fullscreen"):
 		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		else:
@@ -102,4 +102,6 @@ func delay(time: float) -> void:
 
 
 func update_jump_distance(jump_point: Vector3) -> void:
-	jump_distance.text = "Last jump distance: %s m" % (round(player.position.distance_to(jump_point) * 100) / 100)
+	var player_pos = Vector3(player.position.x, 0, player.position.z)
+	var jump_point_pos = Vector3(jump_point.x, 0, jump_point.z)
+	jump_distance.text = "Jump distance: %s m | %s m" % [(round(player.position.distance_to(jump_point) * 100) / 100), (round(player_pos.distance_to(jump_point_pos) * 100) / 100)]
